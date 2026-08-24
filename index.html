@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portal de Apoio - Inclusão e Respeito</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #f8f7fc;
+            color: #25243a;
+        }
+
+        /* =========================
+           CABEÇALHO
+        ========================== */
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e5e1ee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6842a5, #4c9bc8);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .logo-text h2 {
+            color: #39266d;
+            font-size: 20px;
+        }
+
+        .logo-text p {
+            color: #55516c;
+            font-size: 13px;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        nav button {
+            border: none;
+            background: transparent;
+            padding: 12px 18px;
+            border-radius: 10px;
+            color: #29263a;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        nav button:hover,
+        nav button.active {
+            background: #eee8fb;
+            color: #58369b;
+        }
+
+        .school-badge {
+            background: #6543a7;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* =========================
+           PÁGINAS
+        ========================== */
+
+        .page {
+            display: none;
+            animation: aparecer 0.4s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           INÍCIO
+        ========================== */
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            padding: 70px 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            color: #57359b;
+            margin-bottom: 15px;
+        }
+
+        .hero h3 {
+            font-size: 23px;
+            margin-bottom: 25px;
+            color: #29263b;
+        }
+
+        .hero p {
+            line-height: 1.8;
+            font-size: 17px;
+            color: #555267;
+            margin-bottom: 18px;
+        }
+
+        .highlight {
+            background: #e8def9;
+            border-radius: 15px;
+            padding: 18px 22px;
+            color: #4d328a;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+
+        .students {
+            background: linear-gradient(135deg, #eee6ff, #e1f3f6);
+            min-height: 350px;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            box-shadow: 0 15px 35px rgba(55, 39, 100, 0.08);
+        }
+
+        .cards {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 25px 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            border: 1px solid #e4dfed;
+            box-shadow: 0 8px 25px rgba(40, 30, 70, 0.05);
+        }
+
+        .card h2 {
+            color: #287d5b;
+            margin-bottom: 12px;
+        }
+
+        .quiz-card h2 {
+            color: #356fc0;
+        }
+
+        .card p {
+            color: #625f72;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            border: none;
+            padding: 13px 25px;
+            border-radius: 12px;
+            background: #6543a7;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .green-button {
+            background: #269c6b;
+        }
+
+        .blue-button {
+            background: #3677c8;
+        }
+
+        .quote {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #59399a;
+            padding: 20px;
+        }
+
+        /* =========================
+           ESCUTA
+        ========================== */
+
+        .content {
+            max-width: 900px;
+            margin: auto;
+            padding: 60px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h1 {
+            color: #57359b;
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #666275;
+            line-height: 1.6;
+        }
+
+        .support-box {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(40, 30, 70, 0.08);
+            border: 1px solid #e5dfef;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 180px;
+            resize: vertical;
+            border: 2px solid #ded8e9;
+            border-radius: 15px;
+            padding: 18px;
+            font-size: 16px;
+            outline: none;
+            margin: 15px 0;
+        }
+
+        textarea:focus {
+            border-color: #7251b6;
+        }
+
+        .privacy {
+            background: #f2eefb;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #5e5870;
+            margin-bottom: 18px;
+        }
+
+        .response {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 18px;
+            background: #e8f7ef;
+            border-left: 5px solid #2b9b6b;
+        }
+
+        .response h3 {
+            color: #20754f;
+            margin-bottom: 10px;
+        }
+
+        .response p {
+            line-height: 1.7;
+            color: #365847;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           QUIZ
+        ========================== */
+
+        .quiz-container {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(40, 30, 70, 0.08);
+        }
+
+        .question {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e8e4ed;
+        }
+
+        .question h3 {
+            margin-bottom: 18px;
+            color: #302c40;
+        }
+
+        .option {
+            display: block;
+            background: #f7f5fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            background: #eee9f8;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .result h2 {
+            margin-bottom: 12px;
+        }
+
+        .good {
+            background: #e3f7ec;
+            color: #206d48;
+        }
+
+        .attention {
+            background: #fff4d9;
+            color: #795c1e;
+        }
+
+        .danger {
+            background: #fde8e8;
+            color: #8a3030;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================== */
+
+        footer {
+            background: #30264a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            line-height: 1.7;
+        }
+
+        footer strong {
+            color: #d8c5ff;
+        }
+
+        /* =========================
+           RESPONSIVIDADE
+        ========================== */
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 45px;
+            }
+
+            .hero h1 {
+                font-size: 44px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .students {
+                min-height: 250px;
+                font-size: 80px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero h3 {
+                font-size: 19px;
+            }
+
+            .section-title h1 {
+                font-size: 32px;
+            }
+
+            .support-box,
+            .quiz-container,
+            .card {
+                padding: 22px;
+            }
+
+            nav button {
+                padding: 9px 11px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">❤</div>
+
+            <div class="logo-text">
+                <h2>PORTAL DE APOIO</h2>
+                <p>Inclusão e respeito às diferenças</p>
+            </div>
+        </div>
+
+        <nav>
+            <button class="active" onclick="mostrarPagina('inicio', this)">
+                🏠 Início
+            </button>
+
+            <button onclick="mostrarPagina('escuta', this)">
+                💬 Portal de Escuta
+            </button>
+
+            <button onclick="mostrarPagina('quiz', this)">
+                ❓ Quiz do Respeito
+            </button>
+        </nav>
+
+        <div class="school-badge">
+            🏫 Colégios Públicos<br>
+            do Paraná
+        </div>
+
+    </div>
+</header>
+
+
+<!-- =================================
+     PÁGINA INICIAL
+================================== -->
+
+<main id="inicio" class="page active">
+
+    <section class="hero">
+
+        <div>
+
+            <h1>Portal de Apoio</h1>
+
+            <h3>
+                Incluir é acolher. Respeitar é transformar.
+            </h3>
+
+            <p>
+                Seja bem-vindo(a)! Este é um espaço criado para você,
+                estudante.
+            </p>
+
+            <p>
+                Aqui, todas as vozes importam, todas as histórias têm
+                valor e todas as diferenças podem contribuir para uma
+                escola melhor.
+            </p>
+
+            <p>
+                Você não precisa enfrentar tudo sozinho(a).
+                Compartilhar o que sente, refletir sobre suas atitudes
+                e aprender a respeitar as diferenças são passos
+                importantes para construirmos juntos um ambiente
+                mais acolhedor.
+            </p>
+
+            <div class="highlight">
+                💜 Respeito não é apenas uma palavra.
+                É uma atitude que praticamos todos os dias.
+            </div>
+
+        </div>
+
+        <div class="students">
+            🧑🏽‍🤝‍🧑🏻
+        </div>
+
+    </section>
+
+
+    <section class="cards">
+
+        <div class="card">
+
+            <h2>💬 Portal de Escuta</h2>
+
+            <p>
+                Está precisando colocar seus sentimentos para fora?
+                Escreva um desabafo e receba uma mensagem acolhedora
+                e uma orientação.
+            </p>
+
+            <button class="button green-button"
+                    onclick="mostrarPagina('escuta')">
+                Ir para o Portal de Escuta
+            </button>
+
+        </div>
+
+
+        <div class="card quiz-card">
+
+            <h2>❓ Quiz do Respeito</h2>
+
+            <p>
+                Está em dúvida se uma atitude é respeitosa?
+                Responda algumas perguntas e reflita sobre suas
+                escolhas.
+            </p>
+
+            <button class="button blue-button"
+                    onclick="mostrarPagina('quiz')">
+                Começar o Quiz
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <div class="quote">
+        “A diferença nos enriquece, o respeito nos conecta
+        e a empatia nos transforma.”
+        <br>
+        <small>Juntos por uma escola mais inclusiva e acolhedora! 💜</small>
+    </div>
+
+</main>
+
+
+<!-- =================================
+     PORTAL DE ESCUTA
+================================== -->
+
+<main id="escuta" class="page">
+
+    <section class="content">
+
+        <div class="section-title">
+
+            <h1>💬 Portal de Escuta</h1>
+
+            <p>
+                Aqui você pode escrever o que está sentindo.
+                Este espaço foi pensado para ajudar você a organizar
+                seus pensamentos e refletir sobre o que está acontecendo.
+            </p>
+
+        </div>
+
+
+        <div class="support-box">
+
+            <h2>Como você está se sentindo?</h2>
+
+            <p>
+                Escreva seu desabafo no espaço abaixo.
+                Você não precisa escrever seu nome.
+            </p>
+
+            <div class="privacy">
+                🔒 <strong>Privacidade:</strong>
+                este exemplo funciona somente no seu navegador.
+                O texto não é enviado para nenhum servidor.
+            </div>
+
+            <textarea
+                id="desabafo"
+                placeholder="Escreva aqui o que você está sentindo..."></textarea>
+
+            <button class="button green-button"
+                    onclick="responderDesabafo()">
+                Enviar desabafo
+            </button>
+
+
+            <div id="resposta" class="response">
+
+                <h3 id="respostaTitulo">
+                    💚 Obrigado por compartilhar.
+                </h3>
+
+                <p id="respostaTexto"></p>
+
+                <p id="orientacao"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =================================
+     QUIZ
+================================== -->
+
+<main id="quiz" class="page">
+
+    <section class="content">
+
+        <div class="section-title">
+
+            <h1>❓ Quiz do Respeito</h1>
+
+            <p>
+                O objetivo deste quiz não é julgar você.
+                É ajudar a refletir sobre como nossas atitudes
+                podem afetar outras pessoas.
+            </p>
+
+        </div>
+
+
+        <div class="quiz-container">
+
+            <div class="question">
+
+                <h3>
+                    1. Você percebe que um colega está sozinho
+                    durante o intervalo. O que seria mais respeitoso?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="2">
+                    Convidá-lo para participar da conversa ou atividade,
+                    respeitando caso ele prefira ficar sozinho.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="0">
+                    Ignorá-lo porque não é problema meu.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="1">
+                    Fazer uma brincadeira sobre ele estar sozinho.
+                </label>
+
+            </div>
+
+
+            <div class="question">
+
+                <h3>
+                    2. Um colega possui uma opinião diferente da sua.
+                    Como você deve agir?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="2">
+                    Ouvir sua opinião e explicar a minha
+                    sem desrespeitá-lo.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="0">
+                    Dizer que ele está errado e não deixar que fale.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="1">
+                    Rir da opinião dele.
+                </label>
+
+            </div>
+
+
+            <div class="question">
+
+                <h3>
+                    3. Você percebe que uma piada deixou alguém
+                    desconfortável. O que fazer?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="2">
+                    Parar, pedir desculpas e respeitar os sentimentos
+                    da pessoa.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="0">
+                    Continuar porque "era só uma brincadeira".
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="1">
+                    Dizer que a pessoa precisa aprender a aceitar piadas.
+                </label>
+
+            </div>
+
+
+            <div class="question">
+
+                <h3>
+                    4. Você vê alguém sendo excluído por ser diferente.
+                    Qual atitude pode ajudar?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="2">
+                    Demonstrar respeito, incluir a pessoa e,
+                    se necessário, procurar ajuda de um adulto.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="0">
+                    Fingir que não percebeu.
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="1">
+                    Participar da exclusão para não chamar atenção.
+                </label>
+
+            </div>
+
+
+            <button class="button blue-button"
+                    onclick="calcularQuiz()">
+                Ver meu resultado
+            </button>
+
+
+            <div id="resultadoQuiz" class="result">
+
+                <h2 id="resultadoTitulo"></h2>
+
+                <p id="resultadoTexto"></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        <strong>Portal de Apoio</strong>
+    </p>
+
+    <p>
+        Inclusão • Respeito • Empatia • Diversidade
+    </p>
+
+    <p>
+        Este portal é uma ferramenta educativa.
+        Se algo estiver acontecendo com você e estiver difícil
+        lidar sozinho(a), procure um adulto de confiança,
+        professor(a), equipe pedagógica ou outro profissional
+        da sua escola.
+    </p>
+
+    <p>
+        © 2026 - Projeto educativo para escolas públicas do Paraná
+    </p>
+
+</footer>
+
+
+<script>
+
+    /* =================================
+       TROCA DE PÁGINAS
+    ================================== */
+
+    function mostrarPagina(pagina, botao) {
+
+        const paginas = document.querySelectorAll(".page");
+
+        paginas.forEach(function(p) {
+            p.classList.remove("active");
+        });
+
+        document.getElementById(pagina).classList.add("active");
+
+        const botoes = document.querySelectorAll("nav button");
+
+        botoes.forEach(function(b) {
+            b.classList.remove("active");
+        });
+
+        if (botao) {
+            botao.classList.add("active");
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+
+    /* =================================
+       PORTAL DE ESCUTA
+    ================================== */
+
+    function responderDesabafo() {
+
+        const texto = document
+            .getElementById("desabafo")
+            .value
+            .trim()
+            .toLowerCase();
+
+        const resposta = document.getElementById("resposta");
+        const respostaTexto = document.getElementById("respostaTexto");
+        const orientacao = document.getElementById("orientacao");
+
+        if (texto === "") {
+
+            alert("Escreva um pouco sobre o que você está sentindo.");
+
+            return;
+        }
+
+
+        let mensagem = "";
+        let conselho = "";
+
+
+        if (
+            texto.includes("bullying") ||
+            texto.includes("zoando") ||
+            texto.includes("zoaram") ||
+            texto.includes("humilha")
+        ) {
+
+            mensagem =
+                "Sinto muito que você esteja passando por uma situação assim. Você merece ser tratado(a) com respeito e segurança.";
+
+            conselho =
+                "Converse com um adulto de confiança, como um professor, familiar ou integrante da equipe pedagógica. Pedir ajuda não é fraqueza.";
+
+        }
+
+        else if (
+            texto.includes("sozinho") ||
+            texto.includes("sozinha") ||
+            texto.includes("isolado") ||
+            texto.includes("ninguém")
+        ) {
+
+            mensagem =
+                "Sentir-se sozinho(a) pode ser muito difícil. Seus sentimentos são importantes e você merece ter pessoas que possam ouvir você.";
+
+            conselho =
+                "Tente conversar com alguém em quem confia. Um pequeno passo, como procurar um professor ou colega de confiança, pode fazer diferença.";
+
+        }
+
+        else if (
+            texto.includes("triste") ||
+            texto.includes("tristeza") ||
+            texto.includes("chorar") ||
+            texto.includes("chorei")
+        ) {
+
+            mensagem =
+                "Obrigado por confiar neste espaço. Você não precisa fingir que está tudo bem quando não está.";
+
+            conselho =
+                "Procure conversar com alguém de confiança e explique como você está se sentindo. Você merece ser ouvido(a) com atenção.";
+
+        }
+
+        else if (
+            texto.includes("raiva") ||
+            texto.includes("bravo") ||
+            texto.includes("brava") ||
+            texto.includes("irritado")
+        ) {
+
+            mensagem =
+                "Sentir raiva faz parte das emoções humanas. O importante é encontrar maneiras seguras e respeitosas de lidar com ela.";
+
+            conselho =
+                "Antes de agir, tente respirar, afastar-se por alguns minutos e conversar com alguém de confiança sobre o que aconteceu.";
+
+        }
+
+        else {
+
+            mensagem =
+                "Obrigado por compartilhar o que está acontecendo. Seus sentimentos e sua história são importantes.";
+
+            conselho =
+                "Quando algo estiver difícil, procure alguém de confiança para conversar. Você não precisa resolver tudo sozinho(a).";
+
+        }
+
+
+        respostaTexto.textContent = mensagem;
+        orientacao.textContent = "💡 Orientação: " + conselho;
+
+        resposta.style.display = "block";
+
+        resposta.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+
+
+    /* =================================
+       QUIZ
+    ================================== */
+
+    function calcularQuiz() {
+
+        let pontuacao = 0;
+
+        const perguntas = ["q1", "q2", "q3", "q4"];
+
+        for (let i = 0; i < perguntas.length; i++) {
+
+            const selecionada =
+                document.querySelector(
+                    'input[name="' + perguntas[i] + '"]:checked'
+                );
+
+            if (!selecionada) {
+
+                alert(
+                    "Responda todas as perguntas antes de ver o resultado."
+                );
+
+                return;
+            }
+
+            pontuacao += Number(selecionada.value);
+        }
+
+
+        const resultado =
+            document.getElementById("resultadoQuiz");
+
+        const titulo =
+            document.getElementById("resultadoTitulo");
+
+        const texto =
+            document.getElementById("resultadoTexto");
+
+
+        resultado.className = "result";
+
+
+        if (pontuacao >= 7) {
+
+            resultado.classList.add("good");
+
+            titulo.textContent =
+                "🌟 Excelente reflexão!";
+
+            texto.textContent =
+                "Suas respostas mostram uma boa compreensão sobre respeito, empatia e inclusão. Continue pensando em como suas atitudes podem tornar a escola um lugar melhor para todos.";
+
+        }
+
+        else if (pontuacao >= 4) {
+
+            resultado.classList.add("attention");
+
+            titulo.textContent =
+                "💡 Vale a pena refletir um pouco mais!";
+
+            texto.textContent =
+                "Algumas situações podem ser difíceis de perceber. Antes de agir, pense: minha atitude respeita os sentimentos, os limites e as diferenças da outra pessoa?";
+
+        }
+
+        else {
+
+            resultado.classList.add("danger");
+
+            titulo.textContent =
+                "🤝 Que tal repensar algumas atitudes?";
+
+            texto.textContent =
+                "Nossas escolhas podem afetar outras pessoas. Antes de agir, procure pensar nas consequências e escolha uma atitude baseada em respeito e empatia.";
+
+        }
+
+
+        resultado.style.display = "block";
+
+        resultado.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+
+</script>
+
+</body>
+</html>
